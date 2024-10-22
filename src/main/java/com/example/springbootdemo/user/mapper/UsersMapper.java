@@ -3,6 +3,9 @@ package com.example.springbootdemo.user.mapper;
 import com.example.springbootdemo.user.entity.Users;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +17,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UsersMapper extends BaseMapper<Users> {
+
+    List<Users> getUserListByName(@Param("name") String name);
 
 }

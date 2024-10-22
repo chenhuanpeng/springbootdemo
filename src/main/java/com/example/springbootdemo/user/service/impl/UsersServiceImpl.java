@@ -8,6 +8,7 @@ import com.example.springbootdemo.user.mapper.UsersMapper;
 import com.example.springbootdemo.user.service.UsersService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,6 +20,9 @@ import java.util.List;
 public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
         implements UsersService {
 
+    @Resource
+    private UsersMapper usersMapper;
+
     @Override
     public List<Users>  queryUser(Users users ) {
 
@@ -27,6 +31,11 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
         List<Users> user = this.list(Wrappers.<Users>lambdaQuery());
 
         return user;
+    }
+
+    @Override
+    public List<Users> getUserListByName(String name) {
+        return usersMapper.getUserListByName(name);
     }
 
 }
