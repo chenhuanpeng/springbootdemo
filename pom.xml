@@ -60,6 +60,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -98,7 +99,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>1.1.0</version>
+                <version>1.2.0</version>
                 <executions>
                     <execution>
                         <id>build-image</id>
@@ -109,9 +110,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <imageName>test/${project.artifactId}:${project.version}</imageName>
+                    <!-- 指定远程 DockerAPI地址 -->
                     <dockerHost>http://172.26.251.45:2375</dockerHost>
                     <baseImage>openjdk:8</baseImage>
+                    <!-- 构建的镜像名称以及版本号 -->
+                    <imageName>test/${project.artifactId}:${project.version}</imageName>
+
                     <entryPoint>["java", "-jar", "-Dspring.profiles.active=dev","/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
@@ -121,6 +125,7 @@
                         </resource>
                     </resources>
                 </configuration>
+
             </plugin>
         </plugins>
     </build>
