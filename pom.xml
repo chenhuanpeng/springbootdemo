@@ -118,6 +118,8 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <!-- 将forceTags设为true，这样就会覆盖构建相同标签的镜像  -->
+                    <forceTags>true</forceTags>
                     <!-- 指定远程 DockerAPI地址 -->
                     <dockerHost>http://172.26.251.45:2375</dockerHost>
                     <baseImage>openjdk:8</baseImage>
