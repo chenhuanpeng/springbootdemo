@@ -26,16 +26,27 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
     @Override
     public List<Users>  queryUser(Users users ) {
 
+        System.out.println("queryUser方法执行了");
+
         this.save(users);
 
         List<Users> user = this.list(Wrappers.<Users>lambdaQuery());
+
+        System.out.println("queryUser方法执行完成");
 
         return user;
     }
 
     @Override
     public List<Users> getUserListByName(String name) {
-        return usersMapper.getUserListByName(name);
+
+        System.out.println("getUserListByName方法执行了");
+
+        List<Users> userList =  usersMapper.getUserListByName(name);
+
+        System.out.println("getUserListByName方法执行完成");
+
+        return userList;
     }
 
 }
