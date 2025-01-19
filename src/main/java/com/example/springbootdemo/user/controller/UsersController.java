@@ -27,9 +27,9 @@ public class UsersController {
 
     @PostMapping("/get")
     public R<List<Users>> getUsers(@RequestBody Users u) {
-        log.info("查询用户信息开始888！");
+        log.info("查询用户信息开始！");
         List<Users> users = usersService.queryUser(u);
-        log.info("查询用户信息成功888！");
+        log.info("查询用户信息成功！");
         return R.ok(users);
     }
 
